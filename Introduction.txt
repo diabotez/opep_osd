@@ -1,3 +1,26 @@
 # Introduction
-This project focuses on the software GUI of the Orthopedic Department.
-changed
+
+This project focuses on the software GUI of the Orthopedic Department. This department has more operating 
+rooms available for non-urgent orthopedic surgeries. Each operating room is fully scheduled to one team per day.
+
+This project will be used by medics from the Orthopedic Department to improve the ocupancy rate of the 
+operating rooms without being neccessar to do overtime. The targeted ocuancy rate in this project is 80%. 
+The remaining 20% is used for cleaning and also to cover the possibility that a surgery takes longer than 
+planed.
+
+
+This project will be used by:
+  - head of department who can:
+     * create and modify schedules for the available operating rooms
+     * add or remove medics form the medical teams
+     * create new medical teams or remove from existing ones 
+     * add new patients
+     * set the time table for the available operating rooms
+  - medics from the medical teams who can:
+     * add new patients
+     * see available schedules 
+     * change the patient order in one day of planning
+     * see medical teams
+     * see available patient list for the team
+     * see the time table for the available operating rooms
+

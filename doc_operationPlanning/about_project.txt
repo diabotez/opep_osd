@@ -1,0 +1,11 @@
+This project has a welcome interface in both English and Spanish.
+
+The user is asked to select the language from the two buttons in the upper part of the window 
+("Bienvenido!" - for using Spanish language for the rest of the sesion or "Welcome!" - for using English 
+for the rest of the session). 
+
+After the credentials are checked this window will not be visible anymore 
+and the one coresponding with the language previously selected will be now visible. The user is not 
+allowed to change the language during the sesion. To do so, it has to close the sesion and reopen another 
+one.
+
