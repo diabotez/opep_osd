@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="operationPlanning.jnlp">
+  <information>
+    <title>operationPlanning</title>
+    <vendor>user</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib/cplex.jar" size="504817" download="eager" />
+    <jar href="lib/oplall.jar" size="1389109" download="eager" />
+    <jar href="lib/swing-layout-1.0.4.jar" size="117420" download="eager" />
+    <jar href="operationPlanning.jar" size="31435" download="eager" />
+  </resources>
+  <application-desc main-class="operationplanning.OperationPlanning"  name="operationPlanning" >
+  </application-desc>
+  <update check="always"/>
+</jnlp>
