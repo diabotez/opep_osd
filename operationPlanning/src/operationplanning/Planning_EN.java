@@ -24,12 +24,20 @@ public class Planning_EN extends javax.swing.JFrame {
         CreateSchedulePanel_EN createSchedulePanel;
     private final
         ModifySchedulePanel_EN modifySchedulePanel;
+    
+    private Utils.UserType currentUserType;
+    
 
-    /** Creates new form Antenna */
-    public Planning_EN() {
+    /** Creates new form Antenna
+     * @param userType
+     */
+    public Planning_EN(Utils.UserType userType) {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
+        
+        currentUserType = userType;
+        
         for (int i = 0; i < Utils.MAX_NUMBER_OF_TEAMS; i++) {
-            doctorTeamPanel[i] = new DoctorTeamPanel_EN();
+            doctorTeamPanel[i] = new DoctorTeamPanel_EN(currentUserType);
         }
         for (int i = 0; i < Utils.MAX_NUMBER_OF_OR; i++) {
             operationRoomPanel[i] = new OperationRoomPanel_EN();

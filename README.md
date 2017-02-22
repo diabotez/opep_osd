@@ -2,7 +2,7 @@
 Operation Planning of Elective Patients  in an Orthopedic Surgery Department
 
 # Version
-    * 1.0
+    1.0
     
 # Instructions
     * Clone the repository
@@ -10,5 +10,16 @@ Operation Planning of Elective Patients  in an Orthopedic Surgery Department
     * Import "operationPlaning" to the workspace as an existing project
     * Run it in release or debug mode
 
+# Credentials
+To use the app, enter the credentals for one of the available user types in the log-in form.
+
+    Head of departmert
+        username: HeadOfDepartment  
+        password: pass1234
+        
+    Medic
+        username: Medic 
+        password: pass1234
+    
 # Dependencies
     * JDK 1.8 & JRE 1.8

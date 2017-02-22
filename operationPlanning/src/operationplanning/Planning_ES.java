@@ -25,12 +25,21 @@ public
     private final
         ModifySchedulePanel_ES modifySchedulePanel;
 
+    private Utils.UserType currentUserType;
+    
+    /**
+     * 
+     * @param userType 
+     */
     public
-        Planning_ES()
+        Planning_ES(Utils.UserType userType)
     {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
+        
+        currentUserType = userType;
+            
         for (int i = 0; i < Utils.MAX_NUMBER_OF_TEAMS; i++) {
-            doctorTeamPanel[i] = new DoctorTeamPanel_ES();
+            doctorTeamPanel[i] = new DoctorTeamPanel_ES(currentUserType);
         }
         for (int i = 0; i < Utils.MAX_NUMBER_OF_OR; i++) {
             operationRoomPanel[i] = new OperationRoomPanel_ES();

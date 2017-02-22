@@ -8,6 +8,10 @@ package operationplanning;
  */
 public class WelcomeForm_EN_ES extends javax.swing.JFrame {
     
+    private Users userInstance = Users.GetInstance();
+    
+    private Utils.UserType currentUser;
+    
     /** Creates new form */
     public WelcomeForm_EN_ES() {
         initComponents();
@@ -160,16 +164,67 @@ public class WelcomeForm_EN_ES extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        /* Get credentials */
+        String user = usernameTextField.getText();
+        char[] charPass = passPasswordField.getPassword();
+        String pass = String.copyValueOf(charPass);
+        Utils.UserType userType;
+
+        /* Check credentials */
+        if (userInstance.ValidateUserName(user) != Utils.ValidateUser.VALIDATION_OK)
+        {
+            if (esToggleButton.isSelected())
+            {
+                new ErrorFrame("Error", "Nombre de usuario desconocido.").setVisible(true); 
+            }
+            else
+            {
+                new ErrorFrame("Error", "Unknown user name.").setVisible(true); 
+            }
+            
+            return;
+        }
+        
+        if (userInstance.ValidateUserPassword(user, pass) == Utils.ValidateUser.WRONG_PASSWORD)
+        {
+            if (esToggleButton.isSelected())
+            {
+                new ErrorFrame("Error", "Contraseña incorrecta para el nombre de usuario.").setVisible(true); 
+            }
+            else
+            {
+                new ErrorFrame("Error", "Wrong password for the user name.").setVisible(true); 
+            }
+            
+            return;
+        }
+        
+        /* Credentials are OK -> Set usertype */
+        userType = userInstance.GetUserType(user);
+        if (userType.equals(Utils.UserType.UNKNOWN_TYPE))
+        {
+            if (esToggleButton.isSelected())
+            {
+                new ErrorFrame("Error", "Tipo de usuario desconocido para este nombre de usuario.").setVisible(true); 
+            }
+            else
+            {
+                new ErrorFrame("Error", "Unknown user type for this user name.").setVisible(true); 
+            }
+            return;
+        }
+        
+        
         this.setVisible(false);
         
         if (esToggleButton.isSelected())
         {
-            new Planning_ES().setVisible(true);
+            new Planning_ES(userType).setVisible(true);
         }
         else
         {
-            new Planning_EN().setVisible(true); 
+            new Planning_EN(userType).setVisible(true); 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     

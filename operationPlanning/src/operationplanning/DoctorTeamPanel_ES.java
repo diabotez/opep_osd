@@ -26,14 +26,18 @@ public
     
     private JComboBox morningStartTimeTableComboBox = new JComboBox();
     private JComboBox morningEndTimeTableComboBox = new JComboBox();
+        
+    private Utils.UserType currentUserType;
     
 
     /**
      * Creates new form mydoctorTeamPanel
      */
     public
-        DoctorTeamPanel_ES()
+        DoctorTeamPanel_ES(Utils.UserType userType)
     {
+        currentUserType = userType;
+        
         this.morningStartTimeTableModel = TimeTableModels.getMorningTimeTableModel();
         this.morningEndTimeTableModel = TimeTableModels.getMorningTimeTableModel();
         
@@ -86,6 +90,15 @@ public
         startTimeColumn.setCellEditor(new DefaultCellEditor(morningStartTimeTableComboBox));
         TableColumn endTimeColumn = teamPlaningTable.getColumnModel().getColumn(3);
         endTimeColumn.setCellEditor(new DefaultCellEditor(morningEndTimeTableComboBox));
+        
+        if (currentUserType.equals(Utils.UserType.MEDIC))
+        {
+            addDoctorButton.setEnabled(false);
+            deleteTeamButton.setEnabled(false);
+            removeDoctorTeamButton.setEnabled(false);
+            saveTeamButton.setEnabled(false);
+        }
+        
     }
 
     /**

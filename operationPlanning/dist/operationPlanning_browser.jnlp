@@ -2,7 +2,7 @@
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="operationPlanning_browser.jnlp">
   <information>
     <title>operationPlanning</title>
-    <vendor>user</vendor>
+    <vendor>Diana Botez</vendor>
     <description>null</description>
     <offline-allowed/>
   </information>
@@ -11,7 +11,7 @@
     <jar href="lib/cplex.jar" size="504817" download="eager" />
     <jar href="lib/oplall.jar" size="1389109" download="eager" />
     <jar href="lib/swing-layout-1.0.4.jar" size="117420" download="eager" />
-    <jar href="operationPlanning.jar" size="97557" download="eager" />
+    <jar href="operationPlanning.jar" size="49103" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="operationplanning.OperationPlanningMainClass"  name="operationPlanning" >
   </applet-desc>
