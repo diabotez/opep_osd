@@ -9,24 +9,30 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * @abstract
- * 
+ *
  * @author Diana Botez
  */
 public
     class MyUneditableTableModel extends DefaultTableModel
 {
-    
-    public MyUneditableTableModel(Object[] columnNames, int rowCount){
-        super(columnNames,rowCount);
+
+    public
+        MyUneditableTableModel(Object[] columnNames, int rowCount)
+    {
+        super(columnNames, rowCount);
     }
-    
-    public MyUneditableTableModel(Object[][] tableData, Object[] colNames) {
-      super(tableData, colNames);
+
+    public
+        MyUneditableTableModel(Object[][] tableData, Object[] colNames)
+    {
+        super(tableData, colNames);
     }
-    
+
     @Override
-    public boolean isCellEditable(int row, int column) {
-      return false;
+    public
+        boolean isCellEditable(int row, int column)
+    {
+        return false;
     }
-    
+
 }

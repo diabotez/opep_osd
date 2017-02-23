@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 
 /**
  * @abstract
- * 
+ *
  * @author Diana Botez
  */
 public

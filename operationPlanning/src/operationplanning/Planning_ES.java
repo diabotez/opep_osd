@@ -25,19 +25,20 @@ public
     private final
         ModifySchedulePanel_ES modifySchedulePanel;
 
-    private Utils.UserType currentUserType;
-    
+    private
+        Utils.UserType currentUserType;
+
     /**
-     * 
-     * @param userType 
+     *
+     * @param userType
      */
     public
         Planning_ES(Utils.UserType userType)
     {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
-        
+
         currentUserType = userType;
-            
+
         for (int i = 0; i < Utils.MAX_NUMBER_OF_TEAMS; i++) {
             doctorTeamPanel[i] = new DoctorTeamPanel_ES(currentUserType);
         }
@@ -91,7 +92,8 @@ public
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OPEP [ES]");
         setIconImages(null);
-        setMinimumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(740, 580));
+        setPreferredSize(new java.awt.Dimension(740, 580));
 
         jTabbedPanel.setMinimumSize(new java.awt.Dimension(640, 480));
         jTabbedPanel.setPreferredSize(new java.awt.Dimension(640, 480));

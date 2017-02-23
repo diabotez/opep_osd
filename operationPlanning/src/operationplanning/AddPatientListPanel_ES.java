@@ -6,8 +6,8 @@
 package operationplanning;
 
 /**
- * @abstract 
- * 
+ * @abstract
+ *
  * @author Diana Botez
  */
 public

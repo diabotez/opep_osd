@@ -19,10 +19,10 @@ public
         ErrorFrame(String errorTitle, String errorMessage)
     {
         initComponents();
-        
+
         this.setTitle(errorTitle);
         this.errorMessageTextArea.setText(errorMessage);
-        
+
     }
 
     /**

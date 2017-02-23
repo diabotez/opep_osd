@@ -1,19 +1,20 @@
-
 package operationplanning;
 
 import javax.swing.JApplet;
 
 /**
- * @abstract 
- * 
+ * @abstract
+ *
  * @author Diana Botez
  */
-public class OperationPlanningMainClass extends JApplet
+public
+    class OperationPlanningMainClass extends JApplet
 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
+    public static
+        void main(String args[])
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -43,7 +44,8 @@ public class OperationPlanningMainClass extends JApplet
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
-            public void run()
+            public
+                void run()
             {
                 new WelcomeForm_EN_ES().setVisible(true);
             }

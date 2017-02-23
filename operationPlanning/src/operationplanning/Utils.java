@@ -12,28 +12,32 @@ public
     /**/
     public static final
         int MAX_NUMBER_OF_TEAMS = 20;
-    
+
     /**/
     public static final
         int MAX_NUMBER_OF_OR = 20;
-    
+
     /**/
     public static
         int doctorTeamsNumber = 5;
-    
+
     /**/
     public static
         int operatingRoomNumber = 3;
-    
+
     /**/
-    public enum UserType {
+    public
+        enum UserType
+    {
         HEAD_OF_DEPARTMENT,
         MEDIC,
         UNKNOWN_TYPE
     }
-    
+
     /**/
-    public enum ValidateUser{
+    public
+        enum ValidateUser
+    {
         VALIDATION_OK,
         UNKNOWN_USER,
         WRONG_PASSWORD,

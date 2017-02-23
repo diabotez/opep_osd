@@ -12,9 +12,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Diana Botez
  */
-public class OperationRoomPanel_ES extends javax.swing.JScrollPane
+public
+    class OperationRoomPanel_ES extends javax.swing.JScrollPane
 {
-    private DefaultTableModel operationRoomTableModelEN;
+    private
+        DefaultTableModel operationRoomTableModelEN;
+
     /**
      * Creates new form OperationRoomPanelES
      */
@@ -23,7 +26,7 @@ public class OperationRoomPanel_ES extends javax.swing.JScrollPane
     {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
         operationRoomTableModelEN = new DefaultTableModel(
-            new String[]{ "Date", "Starting hour", "ending hour" },
+            new String[]{"Date", "Starting hour", "ending hour"},
             30)
         //<editor-fold defaultstate="collapsed" desc="set column classes">
         {
@@ -35,8 +38,8 @@ public class OperationRoomPanel_ES extends javax.swing.JScrollPane
             }
         } //</editor-fold>
             ;
-         //</editor-fold>
-         
+        //</editor-fold>
+
         initComponents();
     }
 

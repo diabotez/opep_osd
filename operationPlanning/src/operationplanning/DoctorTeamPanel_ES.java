@@ -11,24 +11,32 @@ import javax.swing.JComboBox;
 import javax.swing.table.TableColumn;
 
 /**
- * @abstract 
- * 
+ * @abstract
+ *
  * @author Diana Botez
  */
 public
     class DoctorTeamPanel_ES extends javax.swing.JPanel
 {
-    private MyUneditableTableModel doctorTeamTableModelES;
-    private MyUneditableTableModel teamPlaningTableModelES;
+    private
+        MyUneditableTableModel doctorTeamTableModelES;
+    private
+        MyUneditableTableModel teamPlaningTableModelES;
 
-    private DefaultComboBoxModel morningStartTimeTableModel;
-    private DefaultComboBoxModel morningEndTimeTableModel;
-    
-    private JComboBox morningStartTimeTableComboBox = new JComboBox();
-    private JComboBox morningEndTimeTableComboBox = new JComboBox();
-        
-    private Utils.UserType currentUserType;
-    
+    private
+        DefaultComboBoxModel morningStartTimeTableModel;
+    private
+        DefaultComboBoxModel morningEndTimeTableModel;
+
+    private
+        JComboBox morningStartTimeTableComboBox = new JComboBox();
+    private
+        JComboBox morningEndTimeTableComboBox = new JComboBox();
+
+    private
+        Utils.UserType currentUserType;
+    private
+        Users userInstance = Users.GetInstance();
 
     /**
      * Creates new form mydoctorTeamPanel
@@ -37,12 +45,12 @@ public
         DoctorTeamPanel_ES(Utils.UserType userType)
     {
         currentUserType = userType;
-        
+
         this.morningStartTimeTableModel = TimeTableModels.getMorningTimeTableModel();
         this.morningEndTimeTableModel = TimeTableModels.getMorningTimeTableModel();
-        
+
         this.doctorTeamTableModelES = new MyUneditableTableModel(
-            new String[]{ "Apellidos", "Nombre", "Servicio" },
+            new String[]{"Apellidos", "Nombre", "Servicio"},
             7)
         //<editor-fold defaultstate="collapsed" desc="set column classes">
         {
@@ -55,7 +63,7 @@ public
         } //</editor-fold>
             ;
         this.teamPlaningTableModelES = new MyUneditableTableModel(
-            new String[]{ "Fecha", "Quirófano", "Hora de inicio", "Hora de finalización" },
+            new String[]{"Fecha", "Quirófano", "Hora de inicio", "Hora de finalización"},
             7)
         //<editor-fold defaultstate="collapsed" desc="set column classes">
         {
@@ -72,33 +80,30 @@ public
             }
         } //</editor-fold>           
             ;
-       
+
         morningStartTimeTableComboBox.setModel(morningStartTimeTableModel);
         morningEndTimeTableComboBox.setModel(morningEndTimeTableModel);
-        
+
         morningStartTimeTableComboBox.setSelectedItem("8:00");
-        morningEndTimeTableComboBox.removeItemAt(0); 
+        morningEndTimeTableComboBox.removeItemAt(0);
         morningEndTimeTableComboBox.setSelectedItem("15:00");
-       
+
         /*Call initComponents method*/
         initComponents();
-        
-        
-        
+
         /*Update column types with morningStartTimeTableComboBox menu*/
         TableColumn startTimeColumn = teamPlaningTable.getColumnModel().getColumn(2);
         startTimeColumn.setCellEditor(new DefaultCellEditor(morningStartTimeTableComboBox));
         TableColumn endTimeColumn = teamPlaningTable.getColumnModel().getColumn(3);
         endTimeColumn.setCellEditor(new DefaultCellEditor(morningEndTimeTableComboBox));
-        
-        if (currentUserType.equals(Utils.UserType.MEDIC))
-        {
+
+        if (currentUserType.equals(Utils.UserType.MEDIC)) {
             addDoctorButton.setEnabled(false);
             deleteTeamButton.setEnabled(false);
             removeDoctorTeamButton.setEnabled(false);
             saveTeamButton.setEnabled(false);
         }
-        
+
     }
 
     /**
