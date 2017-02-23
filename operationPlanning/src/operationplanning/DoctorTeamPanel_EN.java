@@ -5,6 +5,7 @@
  */
 package operationplanning;
 
+import java.awt.Graphics;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -35,6 +36,8 @@ public
 
     private
         Utils.UserType currentUserType;
+    private static 
+            int pannelIndex;
 
     /**
      * Creates new form mydoctorTeamPanel
@@ -42,9 +45,10 @@ public
      * @param userType
      */
     public
-        DoctorTeamPanel_EN(Utils.UserType userType)
+        DoctorTeamPanel_EN(Utils.UserType userType, int index)
     {
         currentUserType = userType;
+        pannelIndex = index;
 
         this.morningStartTimeTableModel = TimeTableModels.getMorningTimeTableModel();
         this.morningEndTimeTableModel = TimeTableModels.getMorningTimeTableModel();
@@ -103,6 +107,11 @@ public
             removeDoctorTeamButton.setEnabled(false);
             saveTeamButton.setEnabled(false);
         }
+    }
+    
+    public static void UpdateTeamPannelIndex(int idx)
+    {
+        pannelIndex = idx;
     }
 
     /**
@@ -231,7 +240,8 @@ public
 
     private void deleteTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deleteTeamButtonActionPerformed
     {//GEN-HEADEREND:event_deleteTeamButtonActionPerformed
-        // TODO add your handling code here:
+//        this.invalidate();
+        Planning_EN.removeDoctorTeam(pannelIndex);
     }//GEN-LAST:event_deleteTeamButtonActionPerformed
 
     private void saveTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveTeamButtonActionPerformed

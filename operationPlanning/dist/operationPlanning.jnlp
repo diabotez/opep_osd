@@ -11,7 +11,7 @@
     <jar href="lib/cplex.jar" size="504817" download="eager" />
     <jar href="lib/oplall.jar" size="1389109" download="eager" />
     <jar href="lib/swing-layout-1.0.4.jar" size="117420" download="eager" />
-    <jar href="operationPlanning.jar" size="48991" download="eager" />
+    <jar href="operationPlanning.jar" size="52089" download="eager" />
   </resources>
   <application-desc main-class="operationplanning.OperationPlanningMainClass"  name="operationPlanning" >
   </application-desc>
