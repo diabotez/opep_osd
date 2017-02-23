@@ -35,10 +35,10 @@ public
     private
         Users()
     {
-        users.add("HeadOfDepartment");
-        users.add("Medic");
-        passwords.add("pass1234");
-        passwords.add("pass1234");
+        users.add("admin");
+        users.add("user");
+        passwords.add("1234");
+        passwords.add("1234");
         userTypes.add(Utils.UserType.HEAD_OF_DEPARTMENT);
         userTypes.add(Utils.UserType.MEDIC);
     }

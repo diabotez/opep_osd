@@ -14,12 +14,12 @@ Operation Planning of Elective Patients  in an Orthopedic Surgery Department
 To use the app, enter the credentals for one of the available user types in the log-in form.
 
     Head of departmert
-        username: HeadOfDepartment  
-        password: pass1234
+        username: admin  
+        password: 1234
         
     Medic
-        username: Medic 
-        password: pass1234
+        username: user 
+        password: 1234
     
 # Dependencies
     * JDK 1.8 & JRE 1.8
