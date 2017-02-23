@@ -36,8 +36,6 @@ public
 
     private
         Utils.UserType currentUserType;
-    private static 
-            int pannelIndex;
 
     /**
      * Creates new form mydoctorTeamPanel
@@ -45,10 +43,9 @@ public
      * @param userType
      */
     public
-        DoctorTeamPanel_EN(Utils.UserType userType, int index)
+        DoctorTeamPanel_EN(Utils.UserType userType)
     {
         currentUserType = userType;
-        pannelIndex = index;
 
         this.morningStartTimeTableModel = TimeTableModels.getMorningTimeTableModel();
         this.morningEndTimeTableModel = TimeTableModels.getMorningTimeTableModel();
@@ -107,11 +104,6 @@ public
             removeDoctorTeamButton.setEnabled(false);
             saveTeamButton.setEnabled(false);
         }
-    }
-    
-    public static void UpdateTeamPannelIndex(int idx)
-    {
-        pannelIndex = idx;
     }
 
     /**
@@ -241,7 +233,7 @@ public
     private void deleteTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deleteTeamButtonActionPerformed
     {//GEN-HEADEREND:event_deleteTeamButtonActionPerformed
 //        this.invalidate();
-        Planning_EN.removeDoctorTeam(pannelIndex);
+        Planning_EN.removeDoctorTeam(this);
     }//GEN-LAST:event_deleteTeamButtonActionPerformed
 
     private void saveTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveTeamButtonActionPerformed
@@ -268,4 +260,5 @@ public
     private javax.swing.JScrollPane teamPlaningScrollPane;
     private javax.swing.JTable teamPlaningTable;
     // End of variables declaration//GEN-END:variables
+
 }

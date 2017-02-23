@@ -17,7 +17,8 @@ public
         Vector<DoctorTeamPanel_EN> doctorTeamPanels;
     private static
         Vector<OperationRoomPanel_EN> operationRoomPanel;
-
+    private static 
+            AddNewMedicalTeamPanel_EN addMedicalTeamPannel;
     private static
         AddNewPatientPanel_EN addNewPatientPanel;
     private static
@@ -27,7 +28,7 @@ public
     private static
         ModifySchedulePanel_EN modifySchedulePanel;
 
-    private
+    private static
         Utils.UserType currentUserType;
 
     /**
@@ -46,12 +47,13 @@ public
         currentUserType = userType;
 
         for (int i = 0; i < Utils.doctorTeamsNumber; i++) {
-            doctorTeamPanels.addElement(new DoctorTeamPanel_EN(currentUserType, i));
+            doctorTeamPanels.add(i, new DoctorTeamPanel_EN(currentUserType));
         }
         for (int i = 0; i < Utils.operatingRoomNumber; i++) {
-            operationRoomPanel.addElement(new OperationRoomPanel_EN());
+            operationRoomPanel.add(i, new OperationRoomPanel_EN());
         }
 
+        addMedicalTeamPannel = new AddNewMedicalTeamPanel_EN();
         addNewPatientPanel = new AddNewPatientPanel_EN();
         addPatientListPanel = new AddPatientListPanel_EN();
         createSchedulePanel = new CreateSchedulePanel_EN();
@@ -63,11 +65,13 @@ public
 
         // <editor-fold defaultstate="collapsed" desc="Add tabs to main panel">
         for (int i = 0; i < Utils.doctorTeamsNumber; i++) {
-            doctorTeamTabbedPanel.addTab("Doctor team " + (i + 1), doctorTeamPanels.get(i));
+            doctorTeamTabbedPanel.addTab("Medical team " + (i + 1), doctorTeamPanels.get(i));
         }
         for (int i = 0; i < Utils.operatingRoomNumber; i++) {
             OperationRoomTabbedPanel.addTab("Operation room " + (i + 1), operationRoomPanel.get(i));
         }
+        
+        doctorTeamTabbedPanel.addTab("Add new medical team",addMedicalTeamPannel);
 
         addPatientTabbedPanel.addTab("Add new patient", addNewPatientPanel);
         addPatientTabbedPanel.addTab("Add list of patients", addPatientListPanel);
@@ -79,14 +83,38 @@ public
         pack();
     }
 
-    public static void removeDoctorTeam(int index)
+    /**
+     * 
+     * @param pannel 
+     */
+    public static void removeDoctorTeam(DoctorTeamPanel_EN pannel)
     {
-        int i=0;
-        doctorTeamPanels.remove(index);
+        int i = 0;
+        doctorTeamTabbedPanel.removeAll();
+        doctorTeamPanels.remove(pannel);
         for (DoctorTeamPanel_EN team : doctorTeamPanels) {
-            team.UpdateTeamPannelIndex(i++);
+            doctorTeamTabbedPanel.addTab("Medical team " + (i + 1), team);
+            i++;
         }
+        doctorTeamTabbedPanel.addTab("Add new medical team",addMedicalTeamPannel);
         jTabbedPanel.repaint();
+    }
+    
+    public static void addNewMedicalTeam()
+    {
+        int idx = doctorTeamPanels.size();
+        int i = 0;
+        
+        doctorTeamPanels.addElement(new DoctorTeamPanel_EN(currentUserType));
+        
+        doctorTeamTabbedPanel.removeAll();
+        for (DoctorTeamPanel_EN team : doctorTeamPanels) {
+            doctorTeamTabbedPanel.addTab("Medical team " + (i + 1), team);
+            i++;
+        }
+        doctorTeamTabbedPanel.addTab("Add new medical team",addMedicalTeamPannel);
+        
+//        doctorTeamTabbedPanel.addTab("Medical team " + (idx + 1), doctorTeamPanels.get(idx));
     }
         
         
@@ -137,7 +165,7 @@ public
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane OperationRoomTabbedPanel;
     private javax.swing.JTabbedPane addPatientTabbedPanel;
-    private javax.swing.JTabbedPane doctorTeamTabbedPanel;
+    private static javax.swing.JTabbedPane doctorTeamTabbedPanel;
     private static javax.swing.JTabbedPane jTabbedPanel;
     private javax.swing.JTabbedPane scheduleTabbedPanel;
     // End of variables declaration//GEN-END:variables
