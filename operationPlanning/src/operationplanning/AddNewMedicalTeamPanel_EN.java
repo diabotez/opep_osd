@@ -6,8 +6,9 @@
 package operationplanning;
 
 /**
+ * @abstract
  *
- * @author diana
+ * @author Diana Botez
  */
 public class AddNewMedicalTeamPanel_EN extends javax.swing.JPanel {
 

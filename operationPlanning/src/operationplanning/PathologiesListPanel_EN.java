@@ -11,7 +11,7 @@ package operationplanning;
  * @author Diana Botez
  */
 public
- class PathologiesListPanel_EN extends javax.swing.JScrollPane {
+ class PathologiesListPanel_EN extends javax.swing.JPanel {
     private MyUneditableTableModel pathologiesTableModelEN;
 
     /**
@@ -45,7 +45,6 @@ public
         pathologiesTableModelEN.addRow(new Object[]{"pathology 1", "162", "12"});
         //</editor-fold>
 
-
     }
 
     /**
@@ -58,26 +57,64 @@ public
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pathologyListScrollPane = new javax.swing.JScrollPane();
         pathologyTable = new javax.swing.JTable();
+        buttonsPanel = new javax.swing.JPanel();
+        addButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(640, 480));
 
         pathologyTable.setModel(pathologiesTableModelEN);
+        pathologyListScrollPane.setViewportView(pathologyTable);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getViewport());
-        getViewport().setLayout(layout);
+        addButton.setText("Add Pathology");
+
+        removeButton.setText("Update / Remove");
+
+        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
+        buttonsPanel.setLayout(buttonsPanelLayout);
+        buttonsPanelLayout.setHorizontalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(removeButton)
+                .addContainerGap())
+        );
+        buttonsPanelLayout.setVerticalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(removeButton))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pathologyTable, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(pathologyListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pathologyTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pathologyListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
+    private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JScrollPane pathologyListScrollPane;
     private javax.swing.JTable pathologyTable;
+    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,50 +1,42 @@
 package operationplanning;
 
 import java.util.Vector;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  * @abstract
  *
  * @author user
  */
-public
-    class Planning_EN extends javax.swing.JFrame
-{
+public class Planning_EN extends javax.swing.JFrame {
 
-    private static
-        Vector<DoctorTeamPanel_EN> doctorTeamPanels;
-    private static
-        Vector<OperationRoomPanel_EN> operationRoomPanel;
-    private static 
-            AddNewMedicalTeamPanel_EN addMedicalTeamPannel;
-    private static
-        AddNewPatientPanel_EN addNewPatientPanel;
-    private static
-        AddPatientListPanel_EN addPatientListPanel;
-    private static
-        CreateSchedulePanel_EN createSchedulePanel;
-    private static
-        ModifySchedulePanel_EN modifySchedulePanel;
+    private static AddNewMedicalTeamPanel_EN addMedicalTeamPannel;
+    private static Vector<DoctorTeamPanel_EN> doctorTeamPanels;
 
-    private static
-        Utils.UserType currentUserType;
+    private static Vector<OperationRoomPanel_EN> operationRoomPanel;
+
+    private static AddNewPatientPanel_EN addNewPatientPanel;
+    private static AddPatientListPanel_EN addPatientListPanel;
+    private static SeePatientListPanel_EN seePatientListPanel;
+
+    private static CreateSchedulePanel_EN createSchedulePanel;
+    private static ModifySchedulePanel_EN modifySchedulePanel;
+
+    private static PathologiesListPanel_EN pathologiesListPannel;
+
+    private static Utils.UserType currentUserType;
 
     /**
      * Creates new form Antenna
      *
      * @param userType
      */
-    public
-        Planning_EN(Utils.UserType userType)
-    {
+    public Planning_EN(Utils.UserType userType) {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
+
+        currentUserType = userType;
 
         this.doctorTeamPanels = new Vector<>(Utils.MAX_NUMBER_OF_TEAMS);
         this.operationRoomPanel = new Vector<>(Utils.MAX_NUMBER_OF_OR);
-        
-        currentUserType = userType;
 
         for (int i = 0; i < Utils.doctorTeamsNumber; i++) {
             doctorTeamPanels.add(i, new DoctorTeamPanel_EN(currentUserType));
@@ -54,10 +46,16 @@ public
         }
 
         addMedicalTeamPannel = new AddNewMedicalTeamPanel_EN();
+
         addNewPatientPanel = new AddNewPatientPanel_EN();
         addPatientListPanel = new AddPatientListPanel_EN();
+        seePatientListPanel = new SeePatientListPanel_EN();
+
         createSchedulePanel = new CreateSchedulePanel_EN();
         modifySchedulePanel = new ModifySchedulePanel_EN();
+
+        pathologiesListPannel = new PathologiesListPanel_EN();
+
         // </editor-fold> 
 
         /*Call initComponents method*/
@@ -68,27 +66,29 @@ public
             doctorTeamTabbedPanel.addTab("Medical team " + (i + 1), doctorTeamPanels.get(i));
         }
         for (int i = 0; i < Utils.operatingRoomNumber; i++) {
-            OperationRoomTabbedPanel.addTab("Operation room " + (i + 1), operationRoomPanel.get(i));
+            operationRoomTabbedPanel.addTab("Operation room " + (i + 1), operationRoomPanel.get(i));
         }
-        
-        doctorTeamTabbedPanel.addTab("Add new medical team",addMedicalTeamPannel);
 
+        doctorTeamTabbedPanel.addTab("Add new medical team", addMedicalTeamPannel);
+
+        addPatientTabbedPanel.addTab("See patient list", seePatientListPanel);
         addPatientTabbedPanel.addTab("Add new patient", addNewPatientPanel);
         addPatientTabbedPanel.addTab("Add list of patients", addPatientListPanel);
 
         scheduleTabbedPanel.addTab("Create schedule", createSchedulePanel);
         scheduleTabbedPanel.addTab("Modify schedule", modifySchedulePanel);
+
+        pathologiesTabbedPanel.addTab("List", pathologiesListPannel);
         // </editor-fold> 
 
         pack();
     }
 
     /**
-     * 
-     * @param pannel 
+     *
+     * @param pannel
      */
-    public static void removeDoctorTeam(DoctorTeamPanel_EN pannel)
-    {
+    public static void removeDoctorTeam(DoctorTeamPanel_EN pannel) {
         int i = 0;
         doctorTeamTabbedPanel.removeAll();
         doctorTeamPanels.remove(pannel);
@@ -96,33 +96,28 @@ public
             doctorTeamTabbedPanel.addTab("Medical team " + (i + 1), team);
             i++;
         }
-        doctorTeamTabbedPanel.addTab("Add new medical team",addMedicalTeamPannel);
+        doctorTeamTabbedPanel.addTab("Add new medical team", addMedicalTeamPannel);
         jTabbedPanel.repaint();
     }
-    
-    public static void addNewMedicalTeam()
-    {
+
+    public static void addNewMedicalTeam() {
         int idx = doctorTeamPanels.size();
         int i = 0;
-        
+
         doctorTeamPanels.addElement(new DoctorTeamPanel_EN(currentUserType));
-        
+
         doctorTeamTabbedPanel.removeAll();
         for (DoctorTeamPanel_EN team : doctorTeamPanels) {
             doctorTeamTabbedPanel.addTab("Medical team " + (i + 1), team);
             i++;
         }
-        doctorTeamTabbedPanel.addTab("Add new medical team",addMedicalTeamPannel);
-        
-//        doctorTeamTabbedPanel.addTab("Medical team " + (idx + 1), doctorTeamPanels.get(idx));
+        doctorTeamTabbedPanel.addTab("Add new medical team", addMedicalTeamPannel);
     }
-        
-        
+
     /**
-     * This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -130,23 +125,26 @@ public
         jTabbedPanel = new javax.swing.JTabbedPane();
         doctorTeamTabbedPanel = new javax.swing.JTabbedPane();
         addPatientTabbedPanel = new javax.swing.JTabbedPane();
-        OperationRoomTabbedPanel = new javax.swing.JTabbedPane();
+        pathologiesTabbedPanel = new javax.swing.JTabbedPane();
+        operationRoomTabbedPanel = new javax.swing.JTabbedPane();
         scheduleTabbedPanel = new javax.swing.JTabbedPane();
+        surgeriesPerformedTabbedPane = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OPEP [EN]");
         setIconImages(null);
         setMinimumSize(new java.awt.Dimension(740, 580));
-        setPreferredSize(new java.awt.Dimension(740, 580));
 
         jTabbedPanel.setMinimumSize(new java.awt.Dimension(640, 480));
         jTabbedPanel.setPreferredSize(new java.awt.Dimension(640, 480));
 
         doctorTeamTabbedPanel.setAutoscrolls(true);
         jTabbedPanel.addTab("Doctor teams", null, doctorTeamTabbedPanel, "");
-        jTabbedPanel.addTab("Add new patient(s)", addPatientTabbedPanel);
-        jTabbedPanel.addTab("OR time table", OperationRoomTabbedPanel);
+        jTabbedPanel.addTab("Patients", addPatientTabbedPanel);
+        jTabbedPanel.addTab("Pathologies", pathologiesTabbedPanel);
+        jTabbedPanel.addTab("OR time table", operationRoomTabbedPanel);
         jTabbedPanel.addTab("Schedule", scheduleTabbedPanel);
+        jTabbedPanel.addTab("Details of performed surgeries", surgeriesPerformedTabbedPane);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,11 +161,13 @@ public
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane OperationRoomTabbedPanel;
     private javax.swing.JTabbedPane addPatientTabbedPanel;
     private static javax.swing.JTabbedPane doctorTeamTabbedPanel;
     private static javax.swing.JTabbedPane jTabbedPanel;
+    private javax.swing.JTabbedPane operationRoomTabbedPanel;
+    private javax.swing.JTabbedPane pathologiesTabbedPanel;
     private javax.swing.JTabbedPane scheduleTabbedPanel;
+    private javax.swing.JTabbedPane surgeriesPerformedTabbedPane;
     // End of variables declaration//GEN-END:variables
 
 }

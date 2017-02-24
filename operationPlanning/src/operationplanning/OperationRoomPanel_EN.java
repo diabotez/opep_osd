@@ -6,13 +6,10 @@
 package operationplanning;
 
 import java.util.Calendar;
-import java.util.Locale;
-import javafx.scene.control.DatePicker;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 import org.jdesktop.swingx.table.DatePickerCellEditor;
 
@@ -21,7 +18,7 @@ import org.jdesktop.swingx.table.DatePickerCellEditor;
  *
  * @author Diana Botez
  */
-public class OperationRoomPanel_EN extends javax.swing.JScrollPane {
+public class OperationRoomPanel_EN extends javax.swing.JPanel {
 
     private DefaultTableModel operationRoomTableModelES;
     private DefaultComboBoxModel morningStartTimeTableModel;
@@ -91,27 +88,65 @@ public class OperationRoomPanel_EN extends javax.swing.JScrollPane {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        operationRoomScrollPane = new javax.swing.JScrollPane();
         operationRoomTable = new javax.swing.JTable();
+        buttonsPanel = new javax.swing.JPanel();
+        addButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(640, 480));
 
         operationRoomTable.setModel(operationRoomTableModelES);
+        operationRoomScrollPane.setViewportView(operationRoomTable);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getViewport());
-        getViewport().setLayout(layout);
+        addButton.setText("Add");
+
+        removeButton.setText("Remove");
+
+        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
+        buttonsPanel.setLayout(buttonsPanelLayout);
+        buttonsPanelLayout.setHorizontalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        buttonsPanelLayout.setVerticalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(removeButton))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(operationRoomTable, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(operationRoomScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(operationRoomTable, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(operationRoomScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
+    private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JScrollPane operationRoomScrollPane;
     private javax.swing.JTable operationRoomTable;
+    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 
 
