@@ -13,28 +13,21 @@ import java.util.Vector;
  *
  * @author Diana Botez
  */
-public
-    class Users
-{
-    private static
-        Users instance = null;
+public class Users {
+
+    private static Users instance = null;
 
     /**
      * TODO: Encrypt them.
      */
-    private static
-        Vector<String> users = new Vector<String>(2);
-    private static
-        Vector<String> passwords = new Vector<String>(2);
-    private static
-        Vector<Utils.UserType> userTypes = new Vector<Utils.UserType>(2);
+    private static Vector<String> users = new Vector<String>(2);
+    private static Vector<String> passwords = new Vector<String>(2);
+    private static Vector<Utils.UserType> userTypes = new Vector<Utils.UserType>(2);
 
     /**
      * The constructor of this class.
      */
-    private
-        Users()
-    {
+    private Users() {
         users.add("admin");
         users.add("user");
         passwords.add("1234");
@@ -48,9 +41,7 @@ public
      *
      * @return the singleton instance of the class
      */
-    public static
-        Users GetInstance()
-    {
+    public static Users GetInstance() {
         if (instance == null) {
             instance = new Users();
         }
@@ -62,11 +53,10 @@ public
      *
      * @param userName - the given user name to be searched in the data base
      *
-     * @return VALIDATION_OK - if the user name was found in the data base or UNKNOWN_USER if not
+     * @return VALIDATION_OK - if the user name was found in the data base or
+     * UNKNOWN_USER if not
      */
-    public static
-        Utils.ValidateUser ValidateUserName(String userName)
-    {
+    public static Utils.ValidateUser ValidateUserName(String userName) {
         if (userName == null) {
             return Utils.ValidateUser.UNKNOWN_USER;
         }
@@ -81,21 +71,21 @@ public
     }
 
     /**
-     * This method checks if the given user name is in the data base and if it has the given password.
+     * This method checks if the given user name is in the data base and if it
+     * has the given password.
      *
-     * @param userName     - the given user name to be checked
+     * @param userName - the given user name to be checked
      * @param userPassword - the given password to be checked
      *
-     * @return VALIDATION_OK if there is a user name with the given password, WRONG_PASSWORD if the given password for the username is not the same
-     *         with the one that exists in the data base, UNKNOWN_USER if there is no such user name in the data base
+     * @return VALIDATION_OK if there is a user name with the given password,
+     * WRONG_PASSWORD if the given password for the username is not the same
+     * with the one that exists in the data base, UNKNOWN_USER if there is no
+     * such user name in the data base
      */
-    public static
-        Utils.ValidateUser ValidateUserPassword(String userName, String userPassword)
-    {
+    public static Utils.ValidateUser ValidateUserPassword(String userName, String userPassword) {
         if (userName == null) {
             return Utils.ValidateUser.UNKNOWN_USER;
-        }
-        else if (userPassword == null) {
+        } else if (userPassword == null) {
             return Utils.ValidateUser.WRONG_PASSWORD;
         }
 
@@ -104,8 +94,7 @@ public
                 int idx = users.indexOf(user);
                 if (passwords.get(idx).equals(userPassword)) {
                     return Utils.ValidateUser.VALIDATION_OK;
-                }
-                else {
+                } else {
                     return Utils.ValidateUser.WRONG_PASSWORD;
                 }
             }
@@ -119,11 +108,10 @@ public
      *
      * @param userName - the given user name to be checked
      *
-     * @return the type of the given user name or UNKNOWN_TYPE if there is no such user name
+     * @return the type of the given user name or UNKNOWN_TYPE if there is no
+     * such user name
      */
-    public static
-        Utils.UserType GetUserType(String userName)
-    {
+    public static Utils.UserType GetUserType(String userName) {
         for (String user : users) {
             if (user.equals(userName)) {
                 int idx = users.indexOf(user);
@@ -135,17 +123,17 @@ public
     }
 
     /**
-     * This method adds a new user in the data base, along with it's password and type.
+     * This method adds a new user in the data base, along with it's password
+     * and type.
      *
      * @param userName - the given user name for the new user
      * @param password - the given password for the new user
      * @param userType - the given type for the new user
      *
-     * @return USER_ALREADY_EXISTS if the user name already exists in the data base or VALIDATION_OK if the user was successfully added
+     * @return USER_ALREADY_EXISTS if the user name already exists in the data
+     * base or VALIDATION_OK if the user was successfully added
      */
-    public static
-        Utils.ValidateUser AddNewUser(String userName, String password, Utils.UserType userType)
-    {
+    public static Utils.ValidateUser AddNewUser(String userName, String password, Utils.UserType userType) {
         if (userName == null || password == null || userType == null) {
             return Utils.ValidateUser.INVALID_DATA;
         }
@@ -165,14 +153,13 @@ public
     /**
      * This method sets a new password for the given user name.
      *
-     * @param userName    - the given user name for the password to be change
+     * @param userName - the given user name for the password to be change
      * @param newPassword - the new password for the given user name
      *
-     * @return UNKNOWN_USER if the user name is not in the data base or VALIDATION_OK if the password was successfully modified
+     * @return UNKNOWN_USER if the user name is not in the data base or
+     * VALIDATION_OK if the password was successfully modified
      */
-    public static
-        Utils.ValidateUser ChangePasswordForUser(String userName, String newPassword)
-    {
+    public static Utils.ValidateUser ChangePasswordForUser(String userName, String newPassword) {
         if (!users.contains(userName)) {
             return Utils.ValidateUser.UNKNOWN_USER;
         }
@@ -187,13 +174,12 @@ public
      * This method changes the type of the given user name.
      *
      * @param userName - the given user name for the type to be change
-     * @param newType  - the new type for the given user name
+     * @param newType - the new type for the given user name
      *
-     * @return UNKNOWN_USER if the user name is not in the data base or VALIDATION_OK if the user type was successfully modified
+     * @return UNKNOWN_USER if the user name is not in the data base or
+     * VALIDATION_OK if the user type was successfully modified
      */
-    public static
-        Utils.ValidateUser ChangePasswordForUser(String userName, Utils.UserType newType)
-    {
+    public static Utils.ValidateUser ChangePasswordForUser(String userName, Utils.UserType newType) {
         if (!users.contains(userName)) {
             return Utils.ValidateUser.UNKNOWN_USER;
         }
