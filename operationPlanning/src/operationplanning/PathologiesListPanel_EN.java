@@ -12,7 +12,7 @@ package operationplanning;
  */
 public
  class PathologiesListPanel_EN extends javax.swing.JPanel {
-    private MyUneditableTableModel pathologiesTableModelEN;
+    private static MyUneditableTableModel pathologiesTableModelEN;
 
     /**
      * Creates new form ModifySchedulePanel_ES
@@ -42,9 +42,13 @@ public
         initComponents();
 
         // <editor-fold defaultstate="collapsed" desc="Load data">
-        pathologiesTableModelEN.addRow(new Object[]{"pathology 1", "162", "12"});
+//        pathologiesTableModelEN.addRow(new Object[]{"pathology 1", "162", "12"});
         //</editor-fold>
 
+    }
+
+    public static void addNewPathologyEntry(String pathology, String avg, String std) {
+        pathologiesTableModelEN.addRow(new Object[]{pathology, avg, std});
     }
 
     /**
@@ -69,6 +73,11 @@ public
         pathologyListScrollPane.setViewportView(pathologyTable);
 
         addButton.setText("Add Pathology");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         removeButton.setText("Update / Remove");
 
@@ -109,12 +118,16 @@ public
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        new AddNewPathologyWindow_EN().setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JScrollPane pathologyListScrollPane;
-    private javax.swing.JTable pathologyTable;
+    private static javax.swing.JTable pathologyTable;
     private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 }
