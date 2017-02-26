@@ -1,18 +1,17 @@
-package operationplanning;
-
-import javax.swing.JOptionPane;
-
-
 /*
  * Here comes the text of your license
  * Each line should be prefixed with  * 
  */
+package operationplanning;
+
+import java.util.Vector;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Diana Botez <dia.botez at gmail.com>
  */
-public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
+public class UpdateRemovePathology_EN extends javax.swing.JFrame {
     private String pathologyText;
     private String surgeryText;
     private String avgDurationText;
@@ -20,10 +19,17 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
     private int buttonPressed = 0;
 
     /**
-     * Creates new form AddNewPathologyWindow_EN
+     * Creates new form UpdateRemovePathology
      */
-    public AddNewPathologyWindow_EN() {
+    public UpdateRemovePathology_EN() {
         initComponents();
+
+        //load data
+        Vector<String> pathologiesVector = PathologiesListPanel_EN.getPathologies();
+
+        for (String ptg : pathologiesVector) {
+            pathologyComboBox.addItem(ptg);
+        }
     }
 
     /**
@@ -37,30 +43,36 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pathologyLabel = new javax.swing.JLabel();
-        avgDurationLabel = new javax.swing.JLabel();
-        stdDeviationLabel = new javax.swing.JLabel();
-        addButton = new javax.swing.JButton();
-        cancelButton = new javax.swing.JButton();
-        pathologyTextField = new javax.swing.JTextField();
-        avgDurationFormattedTextField = new javax.swing.JFormattedTextField();
-        stdDeviationFormattedTextField = new javax.swing.JFormattedTextField();
         surgeryLabel = new javax.swing.JLabel();
         surgeryTextField = new javax.swing.JTextField();
+        avgDurationLabel = new javax.swing.JLabel();
+        avgDurationFormattedTextField = new javax.swing.JFormattedTextField();
+        stdDeviationLabel = new javax.swing.JLabel();
+        stdDeviationFormattedTextField = new javax.swing.JFormattedTextField();
+        updateButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        pathologyComboBox = new javax.swing.JComboBox<>();
+        removeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Add new pathology");
         setResizable(false);
 
         pathologyLabel.setText("Pathology");
 
+        surgeryLabel.setText("Surgery");
+
         avgDurationLabel.setText("Average duration (min)");
+
+        avgDurationFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
 
         stdDeviationLabel.setText("Standard deviation (min)");
 
-        addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        stdDeviationFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
+
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -71,11 +83,18 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
             }
         });
 
-        avgDurationFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
+        pathologyComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pathologyComboBoxActionPerformed(evt);
+            }
+        });
 
-        stdDeviationFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
-
-        surgeryLabel.setText("Surgery");
+        removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,14 +109,16 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
                     .addComponent(pathologyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pathologyTextField)
                     .addComponent(avgDurationFormattedTextField)
                     .addComponent(stdDeviationFormattedTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(surgeryTextField))
+                    .addComponent(surgeryTextField)
+                    .addComponent(pathologyComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,7 +127,7 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pathologyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pathologyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pathologyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(surgeryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,8 +142,9 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
                     .addComponent(stdDeviationFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(cancelButton))
+                    .addComponent(updateButton)
+                    .addComponent(cancelButton)
+                    .addComponent(removeButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -140,12 +162,13 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_cancelButtonActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        if (pathologyComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "No pathology to update!\n", "Error ", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        String ptg = pathologyTextField.getText();
+        String ptg = pathologyComboBox.getSelectedItem().toString();
         String srg = surgeryTextField.getText();
         String avg = avgDurationFormattedTextField.getText();
         String std = stdDeviationFormattedTextField.getText();
@@ -154,13 +177,7 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "One ore more fields are not completed.\n", "Error ", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        if (PathologiesListPanel_EN.checkIfPathologyExists(ptg)) {
-            JOptionPane.showMessageDialog(this, "This pathology already exists!\n", "Error ", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        Object[] o = {"Add", "Cancel"};
+        Object[] o = {"Update", "Cancel"};
 
         pathologyText = ptg;
         surgeryText = srg;
@@ -172,26 +189,88 @@ public class AddNewPathologyWindow_EN extends javax.swing.JFrame {
                 + "\nsurgery - " + srg
                 + "\navrage duration - " + avg
                 + "\nstandard deviation - " + std
-                + "\n\nDo you want to add them or go back and update them?", "Check info", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, o, o[1]);
+                + "\n\n Are you sure you want to update the old data with these ones?", "Check info", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, o, o[1]);
 
-        if (option == 0) {
-            //save datas
-            PathologiesListPanel_EN.addNewPathologyEntry(ptg, srg, avg, std);
+        if (option == 0)
+        {
+            //update the data
+            PathologiesListPanel_EN.updatePathologyEntry(ptg, srg, avg, std);
             this.dispose();
         }
-    }//GEN-LAST:event_addButtonActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        if (pathologyComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "No pathology to remove!\n", "Error ", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String ptg = pathologyComboBox.getSelectedItem().toString();
+        String srg = surgeryTextField.getText();
+        String avg = avgDurationFormattedTextField.getText();
+        String std = stdDeviationFormattedTextField.getText();
+
+        if ("".equals(ptg) || "".equals(srg) || "".equals(avg) || "".equals(std)) {
+            JOptionPane.showMessageDialog(this, "One ore more fields are not completed.\n", "Error ", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Object[] o = {"Remove", "Cancel"};
+
+        pathologyText = ptg;
+        surgeryText = srg;
+        avgDurationText = avg;
+        stdDeviationText = std;
+
+        int option = JOptionPane.showOptionDialog(this, "You are about to delete the following data:\n"
+                + "\npathology - " + ptg
+                + "\nsurgery - " + srg
+                + "\navrage duration - " + avg
+                + "\nstandard deviation - " + std
+                + "\n\n Are you sure you want to remove these data permanently form the data base?", "Warning! Data removing", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, o, o[1]);
+
+        if (option == 0) {
+            //remove data
+            PathologiesListPanel_EN.removePathology(ptg);
+            this.dispose();
+        }
+    }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void pathologyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathologyComboBoxActionPerformed
+        if (pathologyComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "No pathology selected!\n", "Error ", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Vector<String> pathologiesVector = PathologiesListPanel_EN.getPathologies();
+        Vector<String> surgergeriesVector = PathologiesListPanel_EN.getSurgeries();
+        Vector<Integer> avgDurationVector = PathologiesListPanel_EN.getAvgDurations();
+        Vector<Integer> stdDeviationVector = PathologiesListPanel_EN.getStdDeviations();
+
+        String ptg = pathologyComboBox.getSelectedItem().toString();
+        int idx = pathologiesVector.indexOf(ptg);
+
+        surgeryTextField.setText(surgergeriesVector.get(idx));
+        avgDurationFormattedTextField.setValue(avgDurationVector.get(idx));
+        stdDeviationFormattedTextField.setValue(stdDeviationVector.get(idx));
+    }//GEN-LAST:event_pathologyComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
     private javax.swing.JFormattedTextField avgDurationFormattedTextField;
     private javax.swing.JLabel avgDurationLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> pathologyComboBox;
     private javax.swing.JLabel pathologyLabel;
-    private javax.swing.JTextField pathologyTextField;
+    private javax.swing.JButton removeButton;
     private javax.swing.JFormattedTextField stdDeviationFormattedTextField;
     private javax.swing.JLabel stdDeviationLabel;
     private javax.swing.JLabel surgeryLabel;
     private javax.swing.JTextField surgeryTextField;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

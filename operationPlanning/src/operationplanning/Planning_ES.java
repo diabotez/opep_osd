@@ -37,15 +37,15 @@ public
     {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
 
-        this.operationRoomPanel = new Vector<>(Utils.MAX_NUMBER_OF_OR);
-        this.doctorTeamPanel = new Vector<>(Utils.MAX_NUMBER_OF_TEAMS);
+        this.operationRoomPanel = new Vector<>();
+        this.doctorTeamPanel = new Vector<>();
         
         currentUserType = userType;
 
-        for (int i = 0; i < Utils.MAX_NUMBER_OF_TEAMS; i++) {
+        for (int i = 0; i < Utils.doctorTeamsNumber; i++) {
             doctorTeamPanel.add(new DoctorTeamPanel_ES(currentUserType));
         }
-        for (int i = 0; i < Utils.MAX_NUMBER_OF_OR; i++) {
+        for (int i = 0; i < Utils.operatingRoomNumber; i++) {
             operationRoomPanel.add(new OperationRoomPanel_ES());
         }
 

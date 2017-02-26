@@ -9,6 +9,7 @@ import java.util.Calendar;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import org.jdesktop.swingx.table.DatePickerCellEditor;
@@ -21,16 +22,19 @@ import org.jdesktop.swingx.table.DatePickerCellEditor;
 public class OperationRoomPanel_EN extends javax.swing.JPanel {
 
     private DefaultTableModel operationRoomTableModelES;
+
     private DefaultComboBoxModel morningStartTimeTableModel;
     private DefaultComboBoxModel morningEndTimeTableModel;
+    private DefaultComboBoxModel eveningStartTimeTableModel;
+    private DefaultComboBoxModel eveningEndTimeTableModel;
 
-    private JComboBox morningStartTimeTableComboBox = new JComboBox();
-    private JComboBox morningEndTimeTableComboBox = new JComboBox();
+    private JComboBox startTimeTableComboBox = new JComboBox();
+    private JComboBox endTimeTableComboBox = new JComboBox();
 
     /**
      * Creates new form OperationRoomPanelES
      */
-    public OperationRoomPanel_EN() {
+    public OperationRoomPanel_EN(boolean morningOR) {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
         operationRoomTableModelES = new DefaultTableModel(
                 new String[]{"Date", "Starting hour", "Ending hour"},
@@ -49,15 +53,25 @@ public class OperationRoomPanel_EN extends javax.swing.JPanel {
         } //</editor-fold>
                 ;
 
-        this.morningStartTimeTableModel = TimeTableModels.getMorningTimeTableModel();
-        this.morningEndTimeTableModel = TimeTableModels.getMorningTimeTableModel();
+        morningStartTimeTableModel = TimeTableModels.getMorningTimeTableModel();
+        morningEndTimeTableModel = TimeTableModels.getMorningTimeTableModel();
+        eveningStartTimeTableModel = TimeTableModels.getAfternoonTimeTableModel();
+        eveningEndTimeTableModel = TimeTableModels.getAfternoonTimeTableModel();
 
-        morningStartTimeTableComboBox.setModel(morningStartTimeTableModel);
-        morningStartTimeTableComboBox.setSelectedIndex(0);
+        if (morningOR == true) {
+            startTimeTableComboBox.setModel(morningStartTimeTableModel);
+            startTimeTableComboBox.setSelectedIndex(0);
 
-        morningEndTimeTableComboBox.setModel(morningEndTimeTableModel);
-        morningEndTimeTableComboBox.removeItemAt(0);
-        morningEndTimeTableComboBox.setSelectedItem("15:00");
+            endTimeTableComboBox.setModel(morningEndTimeTableModel);
+            endTimeTableComboBox.removeItemAt(0);
+            endTimeTableComboBox.setSelectedItem("15:00");
+        } else {
+            startTimeTableComboBox.setModel(eveningStartTimeTableModel);
+            startTimeTableComboBox.setSelectedItem("15:30");
+
+            endTimeTableComboBox.setModel(eveningEndTimeTableModel);
+            endTimeTableComboBox.setSelectedItem("20:00");
+        }
         //</editor-fold>
 
         /*Call initComponents method*/
@@ -68,14 +82,18 @@ public class OperationRoomPanel_EN extends javax.swing.JPanel {
         dateColumn.setCellEditor(new DatePickerCellEditor());
 
         TableColumn startTimeColumn = operationRoomTable.getColumn("Starting hour");
-        startTimeColumn.setCellEditor(new DefaultCellEditor(morningStartTimeTableComboBox));
+        startTimeColumn.setCellEditor(new DefaultCellEditor(startTimeTableComboBox));
 
         TableColumn endTimeColumn = operationRoomTable.getColumn("Ending hour");
-        endTimeColumn.setCellEditor(new DefaultCellEditor(morningEndTimeTableComboBox));
+        endTimeColumn.setCellEditor(new DefaultCellEditor(endTimeTableComboBox));
         
         Calendar c = Calendar.getInstance();
         c.set(2017, 2, 15);
-        operationRoomTableModelES.addRow(new Object[]{c.getTime(), "8:35", "12:05"});
+        if (morningOR == true) {
+            operationRoomTableModelES.addRow(new Object[]{c.getTime(), "8:35", "12:05"});
+        } else {
+            operationRoomTableModelES.addRow(new Object[]{c.getTime(), "15:35", "20:05"});
+        }
         //</editor-fold>
     }
 
@@ -91,17 +109,27 @@ public class OperationRoomPanel_EN extends javax.swing.JPanel {
         operationRoomScrollPane = new javax.swing.JScrollPane();
         operationRoomTable = new javax.swing.JTable();
         buttonsPanel = new javax.swing.JPanel();
-        addButton = new javax.swing.JButton();
-        removeButton = new javax.swing.JButton();
+        addORButton = new javax.swing.JButton();
+        deleteORButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(640, 480));
 
         operationRoomTable.setModel(operationRoomTableModelES);
         operationRoomScrollPane.setViewportView(operationRoomTable);
 
-        addButton.setText("Add");
+        addORButton.setText("Add new operation room");
+        addORButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addORButtonActionPerformed(evt);
+            }
+        });
 
-        removeButton.setText("Remove");
+        deleteORButton.setText("Delete this operation room");
+        deleteORButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteORButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
@@ -109,9 +137,9 @@ public class OperationRoomPanel_EN extends javax.swing.JPanel {
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addORButton, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteORButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -119,8 +147,8 @@ public class OperationRoomPanel_EN extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(removeButton))
+                    .addComponent(addORButton)
+                    .addComponent(deleteORButton))
                 .addContainerGap())
         );
 
@@ -140,13 +168,42 @@ public class OperationRoomPanel_EN extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addORButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addORButtonActionPerformed
+        Object[] o = {"Add morning OR", "Add afternoon OR", "Cancel"};
+        int opt = JOptionPane.showOptionDialog(this, "Do you want to add a new operation room? If yes, is it a morning or afternoon Operation Room? ", "Add new Operation Room", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, o, o[2]);
+
+        //opt is the index in the o vector for the selected option
+        switch (opt) {
+            case 0:
+                Planning_EN.addNewOperationRoom(true);
+                break;
+            case 1:
+                Planning_EN.addNewOperationRoom(false);
+                break;
+            default:
+        }
+    }//GEN-LAST:event_addORButtonActionPerformed
+
+    private void deleteORButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteORButtonActionPerformed
+        Object[] o = {"Yes", "No", "Cancel"};
+        int opt = JOptionPane.showOptionDialog(this, "You are about to delete this operation room. Are you sure you want to delete all the data about this operation room from the data base?", "Warning! Delete operation room", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, o, o[2]);
+
+        switch (opt) {
+            case 0:
+                Planning_EN.removeOperatingRoom(this);
+                break;
+            case 1:
+            default:
+        }
+    }//GEN-LAST:event_deleteORButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    private javax.swing.JButton addORButton;
     private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JButton deleteORButton;
     private javax.swing.JScrollPane operationRoomScrollPane;
     private javax.swing.JTable operationRoomTable;
-    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 
 

@@ -21,7 +21,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="teamPlaningScrollPane" alignment="0" pref="699" max="32767" attributes="0"/>
+          <Component id="teamPlaningScrollPane" alignment="0" pref="640" max="32767" attributes="0"/>
           <Component id="doctorTeamScrollPanel" alignment="1" pref="0" max="32767" attributes="0"/>
           <Component id="doctoresLabel" alignment="0" max="32767" attributes="0"/>
           <Component id="quirofanosUtilisadoLabel" alignment="1" max="32767" attributes="0"/>
@@ -34,7 +34,7 @@
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="doctoresLabel" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="doctorTeamScrollPanel" pref="140" max="32767" attributes="0"/>
+              <Component id="doctorTeamScrollPanel" pref="143" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="quirofanosUtilisadoLabel" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -112,11 +112,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="deleteTeamButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="removeDoctorTeamButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="addDoctorButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="saveTeamButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="removeMedicButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="addMedicButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -125,9 +123,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                   <Component id="deleteTeamButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="removeDoctorTeamButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addDoctorButton" alignment="3" max="32767" attributes="0"/>
-                  <Component id="saveTeamButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="removeMedicButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addMedicButton" alignment="3" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -141,26 +138,21 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteTeamButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="saveTeamButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Save"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveTeamButtonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="addDoctorButton">
+        <Component class="javax.swing.JButton" name="addMedicButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add medic"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addDoctorButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addMedicButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="removeDoctorTeamButton">
+        <Component class="javax.swing.JButton" name="removeMedicButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Remove medic"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeMedicButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -35,14 +35,14 @@ public class Planning_EN extends javax.swing.JFrame {
 
         currentUserType = userType;
 
-        this.doctorTeamPanels = new Vector<>(Utils.MAX_NUMBER_OF_TEAMS);
-        this.operationRoomPanel = new Vector<>(Utils.MAX_NUMBER_OF_OR);
+        doctorTeamPanels = new Vector<>();
+        operationRoomPanel = new Vector<>();
 
         for (int i = 0; i < Utils.doctorTeamsNumber; i++) {
             doctorTeamPanels.add(i, new DoctorTeamPanel_EN(currentUserType));
         }
         for (int i = 0; i < Utils.operatingRoomNumber; i++) {
-            operationRoomPanel.add(i, new OperationRoomPanel_EN());
+            operationRoomPanel.add(i, new OperationRoomPanel_EN(i < (Utils.operatingRoomNumber - 1)));
         }
 
         addMedicalTeamPannel = new AddNewMedicalTeamPanel_EN();
@@ -114,6 +114,30 @@ public class Planning_EN extends javax.swing.JFrame {
         doctorTeamTabbedPanel.addTab("Add new medical team", addMedicalTeamPannel);
     }
 
+    public static void removeOperatingRoom(OperationRoomPanel_EN pannel) {
+        int i = 0;
+        operationRoomTabbedPanel.removeAll();
+        operationRoomPanel.remove(pannel);
+        for (OperationRoomPanel_EN room : operationRoomPanel) {
+            operationRoomTabbedPanel.addTab("Medical team " + (i + 1), room);
+            i++;
+        }
+
+        jTabbedPanel.repaint();
+    }
+
+    public static void addNewOperationRoom(boolean morning) {
+        int idx = operationRoomPanel.size();
+        int i = 0;
+        operationRoomPanel.addElement(new OperationRoomPanel_EN(morning));
+
+        operationRoomTabbedPanel.removeAll();
+        for (OperationRoomPanel_EN room : operationRoomPanel) {
+            operationRoomTabbedPanel.addTab("Operation room " + (i + 1), room);
+            i++;
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,7 +188,7 @@ public class Planning_EN extends javax.swing.JFrame {
     private javax.swing.JTabbedPane addPatientTabbedPanel;
     private static javax.swing.JTabbedPane doctorTeamTabbedPanel;
     private static javax.swing.JTabbedPane jTabbedPanel;
-    private javax.swing.JTabbedPane operationRoomTabbedPanel;
+    private static javax.swing.JTabbedPane operationRoomTabbedPanel;
     private javax.swing.JTabbedPane pathologiesTabbedPanel;
     private javax.swing.JTabbedPane scheduleTabbedPanel;
     private javax.swing.JTabbedPane surgeriesPerformedTabbedPane;

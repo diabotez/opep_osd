@@ -18,6 +18,8 @@
  */
 package operationplanning;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diana Botez <dia.botez at gmail.com>
@@ -68,7 +70,14 @@ public class AddNewMedicalTeamPanel_EN extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddNewTeamButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewTeamButtonActionPerformed
-        Planning_EN.addNewMedicalTeam();
+        Object[] o = {"Add", "Cancel"};
+        int option = JOptionPane.showOptionDialog(this, "You are about to add a new medical team.\n\n Are you sure you want to do this?", "Adding a new medical team", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, o, o[1]);
+
+        if (option == 0) {
+            //add new medical team
+            Planning_EN.addNewMedicalTeam();
+        }
+
     }//GEN-LAST:event_AddNewTeamButtonActionPerformed
 
 

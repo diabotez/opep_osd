@@ -5,10 +5,10 @@
  */
 package operationplanning;
 
-import java.awt.Graphics;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 
 /**
@@ -99,10 +99,9 @@ public
         endTimeColumn.setCellEditor(new DefaultCellEditor(morningEndTimeTableComboBox));
 
         if (currentUserType.equals(Utils.UserType.MEDIC)) {
-            addDoctorButton.setEnabled(false);
+            addMedicButton.setEnabled(false);
             deleteTeamButton.setEnabled(false);
-            removeDoctorTeamButton.setEnabled(false);
-            saveTeamButton.setEnabled(false);
+            removeMedicButton.setEnabled(false);
         }
     }
 
@@ -114,8 +113,7 @@ public
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         doctoresLabel = new javax.swing.JLabel();
         doctorTeamScrollPanel = new javax.swing.JScrollPane();
@@ -125,9 +123,8 @@ public
         teamPlaningTable = new javax.swing.JTable();
         doctorTeamsubPanel = new javax.swing.JPanel();
         deleteTeamButton = new javax.swing.JButton();
-        saveTeamButton = new javax.swing.JButton();
-        addDoctorButton = new javax.swing.JButton();
-        removeDoctorTeamButton = new javax.swing.JButton();
+        addMedicButton = new javax.swing.JButton();
+        removeMedicButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(640, 480));
 
@@ -151,33 +148,25 @@ public
         teamPlaningScrollPane.setViewportView(teamPlaningTable);
 
         deleteTeamButton.setText("Delete this team");
-        deleteTeamButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        deleteTeamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteTeamButtonActionPerformed(evt);
             }
         });
 
-        saveTeamButton.setText("Save");
-        saveTeamButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                saveTeamButtonActionPerformed(evt);
+        addMedicButton.setText("Add medic");
+        addMedicButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMedicButtonActionPerformed(evt);
             }
         });
 
-        addDoctorButton.setText("Add medic");
-        addDoctorButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                addDoctorButtonActionPerformed(evt);
+        removeMedicButton.setText("Remove medic");
+        removeMedicButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeMedicButtonActionPerformed(evt);
             }
         });
-
-        removeDoctorTeamButton.setText("Remove medic");
 
         javax.swing.GroupLayout doctorTeamsubPanelLayout = new javax.swing.GroupLayout(doctorTeamsubPanel);
         doctorTeamsubPanel.setLayout(doctorTeamsubPanelLayout);
@@ -187,27 +176,24 @@ public
                 .addContainerGap()
                 .addComponent(deleteTeamButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(removeDoctorTeamButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addDoctorButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saveTeamButton)
+                .addComponent(removeMedicButton)
+                .addGap(18, 18, 18)
+                .addComponent(addMedicButton)
                 .addContainerGap())
         );
         doctorTeamsubPanelLayout.setVerticalGroup(
             doctorTeamsubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(doctorTeamsubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(deleteTeamButton)
-                .addComponent(removeDoctorTeamButton)
-                .addComponent(addDoctorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveTeamButton))
+                .addComponent(removeMedicButton)
+                .addComponent(addMedicButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(teamPlaningScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(teamPlaningScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
             .addComponent(doctorTeamScrollPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(doctoresLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(quirofanosUtilisadoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,7 +205,7 @@ public
                 .addGap(6, 6, 6)
                 .addComponent(doctoresLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(doctorTeamScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(doctorTeamScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quirofanosUtilisadoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,31 +218,34 @@ public
 
     private void deleteTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deleteTeamButtonActionPerformed
     {//GEN-HEADEREND:event_deleteTeamButtonActionPerformed
-//        this.invalidate();
-        Planning_EN.removeDoctorTeam(this);
+        Object[] o = {"Remove", "Cancel"};
+        int option = JOptionPane.showOptionDialog(this, "You are about to delete this medical team.\n\n Are you sure you want to remove the team permanently form the data base?", "Warning! Medical team removing", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, o, o[1]);
+
+        if (option == 0) {
+            //remove team
+            Planning_EN.removeDoctorTeam(this);
+        }
     }//GEN-LAST:event_deleteTeamButtonActionPerformed
 
-    private void saveTeamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveTeamButtonActionPerformed
-    {//GEN-HEADEREND:event_saveTeamButtonActionPerformed
+    private void addMedicButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addMedicButtonActionPerformed
+    {//GEN-HEADEREND:event_addMedicButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_saveTeamButtonActionPerformed
+    }//GEN-LAST:event_addMedicButtonActionPerformed
 
-    private void addDoctorButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addDoctorButtonActionPerformed
-    {//GEN-HEADEREND:event_addDoctorButtonActionPerformed
+    private void removeMedicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMedicButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addDoctorButtonActionPerformed
+    }//GEN-LAST:event_removeMedicButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addDoctorButton;
+    private javax.swing.JButton addMedicButton;
     private javax.swing.JButton deleteTeamButton;
     private javax.swing.JScrollPane doctorTeamScrollPanel;
     private javax.swing.JTable doctorTeamTable;
     private javax.swing.JPanel doctorTeamsubPanel;
     private javax.swing.JLabel doctoresLabel;
     private javax.swing.JLabel quirofanosUtilisadoLabel;
-    private javax.swing.JButton removeDoctorTeamButton;
-    private javax.swing.JButton saveTeamButton;
+    private javax.swing.JButton removeMedicButton;
     private javax.swing.JScrollPane teamPlaningScrollPane;
     private javax.swing.JTable teamPlaningTable;
     // End of variables declaration//GEN-END:variables

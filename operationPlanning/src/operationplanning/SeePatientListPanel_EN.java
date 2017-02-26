@@ -5,6 +5,8 @@
  */
 package operationplanning;
 
+import javax.swing.JOptionPane;
+
 /**
  * @abstract
  *
@@ -13,14 +15,36 @@ package operationplanning;
 public
     class SeePatientListPanel_EN extends javax.swing.JPanel
 {
-
+    MyUneditableTableModel patientListTableModel_EN;
     /**
      * Creates new form AddPatientListPanelES
      */
     public
         SeePatientListPanel_EN()
     {
+        // <editor-fold defaultstate="collapsed" desc="Initialize variables">
+        patientListTableModel_EN = new MyUneditableTableModel(
+                new String[]{"Last name", "First name", "Pathology", "Surgery", "Scheduled date"},
+                0) //<editor-fold defaultstate="collapsed" desc="set column classes">
+        {
+            @Override
+            public Class getColumnClass(int col) {
+                String name = patientListTableModel_EN.getColumnName(col);
+
+                if (name.equals("Scheduled date")) {
+                    return java.util.Date.class;
+                } else {
+                    return java.lang.String.class;
+                }
+            }
+        } //</editor-fold>
+                ;
+
+        //</editor-fold>
         initComponents();
+
+        // <editor-fold defaultstate="collapsed" desc="Update the datas on combo box">
+        //</editor-fold>
     }
 
     /**
@@ -33,21 +57,65 @@ public
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        medicComboBox = new javax.swing.JComboBox<>();
+        medicLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        patientListTable = new javax.swing.JTable();
+
         setPreferredSize(new java.awt.Dimension(640, 480));
+
+        medicComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        medicComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medicComboBoxActionPerformed(evt);
+            }
+        });
+
+        medicLabel.setText("Medic");
+
+        patientListTable.setModel(patientListTableModel_EN);
+        jScrollPane1.setViewportView(patientListTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(medicLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(medicComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(medicComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medicLabel))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void medicComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicComboBoxActionPerformed
+        /**
+         * Update table with the patient list.
+         */
+
+        JOptionPane.showMessageDialog(null, "A new medic was selected. The table will be updated wit the coresponding data.", "Info", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_medicComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> medicComboBox;
+    private javax.swing.JLabel medicLabel;
+    private javax.swing.JTable patientListTable;
     // End of variables declaration//GEN-END:variables
 }
