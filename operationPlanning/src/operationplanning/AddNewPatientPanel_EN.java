@@ -110,7 +110,7 @@ public
         medicsComboBox.setMinimumSize(new java.awt.Dimension(350, 30));
         medicsComboBox.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        patientNumberLabel.setText("Patient number");
+        patientNumberLabel.setText("Patient ID");
         patientNumberLabel.setMaximumSize(new java.awt.Dimension(108000, 40));
         patientNumberLabel.setMinimumSize(new java.awt.Dimension(150, 30));
         patientNumberLabel.setPreferredSize(new java.awt.Dimension(150, 30));

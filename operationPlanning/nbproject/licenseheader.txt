@@ -1,0 +1,15 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Copyright (C) ${date?date?string("yyyy")} ${project.organization!user} - All Rights Reserved
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+${licensePrefix}Althering the content of this licence under any circumstances
+${licensePrefix}is strictly forbidden.
+${licensePrefix}This program is distributed in the hope that it will be useful,
+${licensePrefix}but WITHOUT ANY WARRANTY; without even the implied warranty of
+${licensePrefix}MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+${licensePrefix} 
+<#if licenseLast??>
+${licenseLast}
+</#if>

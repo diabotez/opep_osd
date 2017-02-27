@@ -24,7 +24,7 @@ public
     {
         // <editor-fold defaultstate="collapsed" desc="Initialize variables">
         patientListTableModel_EN = new MyUneditableTableModel(
-                new String[]{"Last name", "First name", "Pathology", "Surgery", "Scheduled date"},
+                new String[]{"Patient ID", "Last name", "First name", "Pathology", "Surgery", "Scheduled date"},
                 0) //<editor-fold defaultstate="collapsed" desc="set column classes">
         {
             @Override

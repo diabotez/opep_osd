@@ -1,4 +1,11 @@
-/operationPlanning/nbproject/**/*
+/operationPlanning/nbproject/configs/*
+/operationPlanning/nbproject/private/*
+/operationPlanning/nbproject/templates/*
+/operationPlanning/nbproject/build-impl.xml
+/operationPlanning/nbproject/getfiles.properties
+/operationPlanning/nbproject/jfx-impl.xml
+/operationPlanning/nbproject/project.properties
+/operationPlanning/nbproject/project.xml
 /operationPlanning/build/
 /operationPlanning/dist/web-files/
 /operationPlanning/dist/operationPlanning.html
