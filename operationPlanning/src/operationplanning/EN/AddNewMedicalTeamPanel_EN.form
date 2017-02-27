@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="coordinatorDepartmentLabel" alignment="0" pref="200" max="32767" attributes="0"/>
+                  <Component id="coordinatorFirstNameLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="coordinatorLastNameLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="memberLastNameLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="memberFirstNameLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="memberDepartmentLabel" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="resetButton" min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="AddNewTeamButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="coordinatorLastNameTextField" max="32767" attributes="0"/>
+                  <Component id="coordinatorFirstNameTextField" pref="384" max="32767" attributes="0"/>
+                  <Component id="coordinatorDepartmentTextField" alignment="0" pref="384" max="32767" attributes="0"/>
+                  <Component id="memberLastNameTextField" alignment="0" pref="384" max="32767" attributes="0"/>
+                  <Component id="memberFirstNameTextField" alignment="0" pref="384" max="32767" attributes="0"/>
+                  <Component id="memberDepartmentTextField" alignment="0" pref="384" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="coordinatorLastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="coordinatorLastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="coordinatorFirstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="coordinatorFirstNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="coordinatorDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="coordinatorDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="memberLastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="memberLastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="memberFirstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="memberFirstNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="memberDepartmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="memberDepartmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AddNewTeamButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="resetButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="130" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="AddNewTeamButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add new team"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddNewTeamButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="coordinatorLastNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Coordinator&apos;s last name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="coordinatorFirstNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Coordinator&apos;s first name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="coordinatorDepartmentLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Coordinator&apos;s department"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="memberDepartmentLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Member&apos;s department"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="memberFirstNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Member&apos;s first name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="memberLastNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Member&apos;s last name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="coordinatorLastNameTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="coordinatorFirstNameTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="coordinatorDepartmentTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="memberLastNameTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="memberFirstNameTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="memberDepartmentTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="resetButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reset"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetButtonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
